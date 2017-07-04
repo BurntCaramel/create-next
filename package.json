@@ -1,0 +1,8 @@
+{
+  "name": "create-next",
+  "version": "0.1.0",
+  "description": "Tool to quickly create Next.js apps, components, organisms, and more",
+  "main": "index.js",
+  "author": "Patrick Smith <patrick@burntcaramel.com>",
+  "license": "MIT"
+}
