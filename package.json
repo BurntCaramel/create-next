@@ -9,6 +9,8 @@
     "create-next": "./index.js"
   },
   "dependencies": {
+    "creed": "^1.2.1",
+    "cross-spawn": "^5.1.0",
     "fs-extra": "^3.0.1",
     "yargs": "^8.0.2"
   }
