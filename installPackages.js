@@ -5,7 +5,7 @@ const { resolve, coroutine, runNode } = require('creed')
 
 const accessibleFile = (path) => runNode(FS.access, path).map(() => path).catch(() => null)
 
-const installPackages = coroutine(function * installPackage(projectPath, packageNames, { dev = false } = {}) {
+const installPackages = coroutine(function * installPackage(projectPath, packageNames, { dev = false, useYarn = false } = {}) {
     const appPackage = require(Path.join(projectPath, 'package.json'))
     const dependencies = (dev ? appPackage.devDependencies : appPackage.dependencies) || {}
     const needInstalling = packageNames.filter(packageName => !dependencies[packageName])
@@ -13,11 +13,14 @@ const installPackages = coroutine(function * installPackage(projectPath, package
         return
     }
 
-    const useYarn = !!(yield accessibleFile(Path.join(projectPath, 'yarn.lock')))
+    useYarn = !!(yield accessibleFile(Path.join(projectPath, 'yarn.lock'))) || useYarn
     const command = useYarn ? 'yarnpkg' : 'npm'
     let args = useYarn ? ['add'].concat(dev ? ['--dev'] : []) : ['install', dev ? '--save' : '--save-dev']
     args.push.apply(args, needInstalling)
-    const proc = Spawn.sync(command, args, { stdio: 'inherit' })
+    const proc = Spawn.sync(command, args, {
+        cwd: projectPath,
+        stdio: 'inherit'
+    })
     if (proc.status !== 0) {
       throw new Error(`\`${command} ${args.join(' ')}\` failed with status ${proc.status}`)
     }
