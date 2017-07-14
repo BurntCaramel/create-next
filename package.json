@@ -1,8 +1,15 @@
 {
   "name": "create-next",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tool to quickly create Next.js apps, components, organisms, and more",
   "main": "index.js",
   "author": "Patrick Smith <patrick@burntcaramel.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "bin": {
+    "create-next": "./index.js"
+  },
+  "dependencies": {
+    "fs-extra": "^3.0.1",
+    "yargs": "^8.0.2"
+  }
 }
