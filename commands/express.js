@@ -2,6 +2,8 @@ function make({
 	name,
 	baseDir
 } = {}) {
+	const dependencies = ['express']
+
 	const filesMap = new Map()
 
 	filesMap.set('server.js', {
@@ -37,7 +39,8 @@ app.prepare()
 	
 	return {
 		baseDir,
-		filesMap
+		filesMap,
+		dependencies
 	}
 }
 
