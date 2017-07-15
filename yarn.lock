@@ -30,6 +30,15 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+create-create@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/create-create/-/create-create-0.1.2.tgz#58eb247eb0d206e456cda052fc9c585b6eac8863"
+  dependencies:
+    creed "^1.2.1"
+    cross-spawn "^5.1.0"
+    fs-extra "^3.0.1"
+    yargs "^8.0.2"
+
 creed@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/creed/-/creed-1.2.1.tgz#94e2420c0538e38b701b1dce893d2cda73fe18fd"

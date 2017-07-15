@@ -1,10 +1,12 @@
 const toJSON = (a) => JSON.stringify(a)
 
-function makeFilesMap({
+function make({
+	baseDir,
 	inline = true
 } = {}) {
 	const filesMap = new Map()
-	filesMap.set('.babelrc', (
+	filesMap.set('.babelrc', {
+		text: (
 `{
 	"presets": [
 		"next/babel"
@@ -13,12 +15,13 @@ function makeFilesMap({
 		["emotion/babel", { "inline": ${toJSON(inline)} }]
 	]
 }
-`
-	))
+`)
+	})
 
-	return filesMap
+	return {
+		baseDir,
+		filesMap
+	}
 }
 
-module.exports = {
-	makeFilesMap
-}
+module.exports = make

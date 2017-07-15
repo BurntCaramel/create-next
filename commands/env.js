@@ -1,11 +1,12 @@
 function make({
+	baseDir,
 	inline = true
 } = {}) {
-	const dependencies = []
 	const devDependencies = ['dotenv']
 
 	const filesMap = new Map()
-	filesMap.set('next.config.js', (
+	filesMap.set('next.config.js', {
+		text: (
 `require('dotenv').config()
 const webpack = require('webpack')
 module.exports = {
@@ -16,11 +17,11 @@ module.exports = {
 		return config
 	}
 }
-`
-	))
+`)
+	})
 
 	return {
-		dependencies,
+		baseDir,
 		devDependencies,
 		filesMap
 	}

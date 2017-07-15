@@ -1,4 +1,11 @@
-const serverJS = (
+function make({
+	name,
+	baseDir
+} = {}) {
+	const filesMap = new Map()
+
+	filesMap.set('server.js', {
+		text: (
 `const express = require('express')
 const next = require('next')
 
@@ -26,10 +33,12 @@ app.prepare()
 	})
 })
 `)
-
-const filesMap = new Map()
-filesMap.set('server.js', serverJS)
-
-module.exports = {
-	makeFilesMap: () => filesMap
+	})
+	
+	return {
+		baseDir,
+		filesMap
+	}
 }
+
+module.exports = make
