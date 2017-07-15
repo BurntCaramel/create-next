@@ -4,6 +4,8 @@ function make({
 	baseDir,
 	inline = true
 } = {}) {
+	const devDependencies = ['emotion']
+
 	const filesMap = new Map()
 	filesMap.set('.babelrc', {
 		text: (
@@ -20,7 +22,8 @@ function make({
 
 	return {
 		baseDir,
-		filesMap
+		filesMap,
+		devDependencies
 	}
 }
 
